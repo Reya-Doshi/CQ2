@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NXYEN | FPO Operating System</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #22c55e;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #22c55e;
+        }
+        
+        /* Smooth transitions for bars */
+        .bar-fill { transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); }
+        .number-animate { transition: all 0.5s ease; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200">
+
+    <!-- Navbar -->
+    <nav class="border-b border-slate-800 bg-slate-900/90 backdrop-blur fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-green-500 w-8 h-8 rounded flex items-center justify-center text-slate-900 font-bold">N</div>
+                <span class="font-bold text-lg tracking-tight">NXYEN <span class="text-slate-500 font-normal">FPO OS v1.0</span></span>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center gap-2 text-xs text-green-400 bg-green-900/30 px-3 py-1 rounded-full border border-green-800">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    System Online
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-24 pb-12 px-6 max-w-7xl mx-auto grid lg:grid-cols-12 gap-8">
+
+        <!-- LEFT COLUMN: The Simulator Control Panel -->
+        <div class="lg:col-span-4 space-y-6">
+            
+            <!-- Intro Card -->
+            <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 shadow-xl">
+                <h1 class="text-2xl font-bold text-white mb-2">The Solution Engine</h1>
+                <p class="text-slate-400 text-sm mb-4">Don't just tell them. Show them. Use the controls below to simulate the NXYEN strategy.</p>
+                <div class="p-3 bg-blue-900/30 border border-blue-800 rounded text-xs text-blue-200">
+                    <i data-lucide="info" class="inline w-3 h-3 mr-1"></i> Current Status: <strong>Stage 1 (Grant Dependent)</strong>
+                </div>
+            </div>
+
+            <!-- Control 1: Margin Expansion -->
+            <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-2 bg-purple-500/20 text-purple-400 rounded"><i data-lucide="layers" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-white">1. Margin Expansion</h3>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-slate-300">Raw Aggregation Only</span>
+                        <span class="text-xs bg-slate-700 px-2 py-1 rounded text-slate-400">Baseline</span>
+                    </div>
+                    
+                    <label class="flex items-center justify-between cursor-pointer group">
+                        <span class="text-sm text-white group-hover:text-green-400 transition">Enable Cleaning & Grading</span>
+                        <input type="checkbox" id="check-grading" class="w-5 h-5 accent-green-500" onchange="updateSimulation()">
+                    </label>
+
+                    <label class="flex items-center justify-between cursor-pointer group">
+                        <span class="text-sm text-white group-hover:text-green-400 transition">Enable Bulk Inputs</span>
+                        <input type="checkbox" id="check-inputs" class="w-5 h-5 accent-green-500" onchange="updateSimulation()">
+                    </label>
+
+                    <label class="flex items-center justify-between cursor-pointer group">
+                        <span class="text-sm text-white group-hover:text-green-400 transition">Enable Branding/Packaging</span>
+                        <input type="checkbox" id="check-branding" class="w-5 h-5 accent-green-500" onchange="updateSimulation()">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Control 2: Governance -->
+            <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-2 bg-orange-500/20 text-orange-400 rounded"><i data-lucide="users" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-white">2. Governance & People</h3>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-slate-300">Volunteer Management</span>
+                        <span class="text-xs bg-red-900/50 text-red-300 px-2 py-1 rounded">High Risk</span>
+                    </div>
+                    
+                    <label class="flex items-center justify-between cursor-pointer group">
+                        <span class="text-sm text-white group-hover:text-green-400 transition">Hire Professional CEO</span>
+                        <input type="checkbox" id="check-ceo" class="w-5 h-5 accent-green-500" onchange="updateSimulation()">
+                    </label>
+
+                    <label class="flex items-center justify-between cursor-pointer group">
+                        <span class="text-sm text-white group-hover:text-green-400 transition">Performance-Linked Pay</span>
+                        <input type="checkbox" id="check-incentive" class="w-5 h-5 accent-green-500" onchange="updateSimulation()">
+                    </label>
+                </div>
+            </div>
+
+             <!-- Control 3: Market Access -->
+             <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-2 bg-blue-500/20 text-blue-400 rounded"><i data-lucide="shopping-bag" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-white">3. Market Access</h3>
+                </div>
+                
+                <div class="space-y-4">
+                    <label class="flex items-center justify-between cursor-pointer group">
+                        <span class="text-sm text-white group-hover:text-green-400 transition">Sign Anchor Buyer (Contract)</span>
+                        <input type="checkbox" id="check-buyer" class="w-5 h-5 accent-green-500" onchange="updateSimulation()">
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Real-time Dashboard -->
+        <div class="lg:col-span-8 space-y-6">
+            
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 relative overflow-hidden">
+                    <div class="text-slate-400 text-xs uppercase tracking-wider mb-1">Net Profit Margin</div>
+                    <div class="flex items-baseline gap-2">
+                        <span id="display-margin" class="text-3xl font-bold text-red-400 mono number-animate">3.5%</span>
+                        <span class="text-xs text-slate-500">Target: 15%</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-slate-700">
+                        <div id="bar-margin" class="h-full bg-red-500 bar-fill" style="width: 23%"></div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 relative overflow-hidden">
+                    <div class="text-slate-400 text-xs uppercase tracking-wider mb-1">Annual Turnover</div>
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-slate-400 text-lg">₹</span>
+                        <span id="display-turnover" class="text-3xl font-bold text-white mono number-animate">25.0</span>
+                        <span class="text-sm text-slate-400">Lakhs</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-slate-700">
+                        <div id="bar-turnover" class="h-full bg-blue-500 bar-fill" style="width: 25%"></div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 relative overflow-hidden">
+                    <div class="text-slate-400 text-xs uppercase tracking-wider mb-1">Grant Dependence</div>
+                    <div class="flex items-baseline gap-2">
+                        <span id="display-dependence" class="text-3xl font-bold text-red-400 mono number-animate">90%</span>
+                        <span class="text-xs text-slate-500">Target: 0%</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-slate-700">
+                        <div id="bar-dependence" class="h-full bg-red-500 bar-fill" style="width: 90%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Graduation Roadmap Visualizer -->
+            <div class="bg-slate-800 rounded-xl border border-slate-700 p-8">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-xl font-bold">Graduation Status</h2>
+                    <div id="stage-badge" class="px-3 py-1 bg-red-500/20 text-red-300 text-xs font-bold uppercase rounded border border-red-500/50">
+                        Stage 1: Struggling
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <!-- Progress Line -->
+                    <div class="absolute top-1/2 left-0 w-full h-2 bg-slate-700 -translate-y-1/2 rounded-full"></div>
+                    <div id="progress-line" class="absolute top-1/2 left-0 w-0 h-2 bg-gradient-to-r from-red-500 to-green-500 -translate-y-1/2 rounded-full transition-all duration-1000"></div>
+
+                    <div class="relative flex justify-between">
+                        <!-- Stage 1 Node -->
+                        <div class="flex flex-col items-center gap-3">
+                            <div id="node-1" class="w-12 h-12 rounded-full bg-slate-800 border-4 border-green-500 flex items-center justify-center z-10 shadow-[0_0_20px_rgba(34,197,94,0.5)] transition-all">
+                                <i data-lucide="sprout" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-bold text-sm">Aggregation</div>
+                                <div class="text-xs text-slate-500">Backbone</div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 2 Node -->
+                        <div class="flex flex-col items-center gap-3">
+                            <div id="node-2" class="w-12 h-12 rounded-full bg-slate-800 border-4 border-slate-600 flex items-center justify-center z-10 transition-all">
+                                <i data-lucide="layers" class="w-5 h-5 text-slate-500"></i>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-bold text-sm text-slate-500">Value Add</div>
+                                <div class="text-xs text-slate-600">Margin Expansion</div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 3 Node -->
+                        <div class="flex flex-col items-center gap-3">
+                            <div id="node-3" class="w-12 h-12 rounded-full bg-slate-800 border-4 border-slate-600 flex items-center justify-center z-10 transition-all">
+                                <i data-lucide="rocket" class="w-5 h-5 text-slate-500"></i>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-bold text-sm text-slate-500">Independence</div>
+                                <div class="text-xs text-slate-600">Market Integration</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="status-message" class="mt-8 p-4 bg-slate-900 rounded border border-slate-700 text-center text-sm text-slate-400 italic">
+                    "FPO is currently dependent on grants. Activate strategies on the left to evolve."
+                </div>
+            </div>
+
+            <!-- Market Linkage Visualization -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Before Chart -->
+                <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 opacity-50 transition" id="market-old">
+                    <h3 class="text-sm font-bold text-red-400 mb-4 flex items-center gap-2"><i data-lucide="x-circle" class="w-4 h-4"></i> The Old Way</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span>Buyer</span>
+                            <span class="text-slate-400">Local Mandi (Spot)</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Price Certainty</span>
+                            <span class="text-red-400">Low (Volatile)</span>
+                        </div>
+                         <div class="flex justify-between text-sm">
+                            <span>Payment Terms</span>
+                            <span class="text-red-400">Delayed (30-60 Days)</span>
+                        </div>
+                        <div class="w-full bg-slate-700 h-24 rounded mt-4 flex items-end justify-center pb-2 gap-1 overflow-hidden">
+                             <!-- Volatile graph bars -->
+                             <div class="w-2 bg-red-500 h-[30%]"></div>
+                             <div class="w-2 bg-red-500 h-[80%]"></div>
+                             <div class="w-2 bg-red-500 h-[20%]"></div>
+                             <div class="w-2 bg-red-500 h-[50%]"></div>
+                             <div class="w-2 bg-red-500 h-[40%]"></div>
+                             <div class="w-2 bg-red-500 h-[90%]"></div>
+                        </div>
+                        <div class="text-center text-xs text-red-400 mt-1">Unpredictable Revenue</div>
+                    </div>
+                </div>
+
+                <!-- After Chart -->
+                <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 transition" id="market-new">
+                    <h3 class="text-sm font-bold text-green-400 mb-4 flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4"></i> The NXYEN Way</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span>Buyer</span>
+                            <span class="text-white font-bold">Anchor Corporate</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Price Certainty</span>
+                            <span class="text-green-400">Fixed (Pre-season)</span>
+                        </div>
+                         <div class="flex justify-between text-sm">
+                            <span>Payment Terms</span>
+                            <span class="text-green-400">Advance + 7 Days</span>
+                        </div>
+                        <div class="w-full bg-slate-700 h-24 rounded mt-4 flex items-end justify-center pb-2 gap-1 overflow-hidden">
+                             <!-- Stable graph bars -->
+                             <div class="w-2 bg-green-500 h-[70%]"></div>
+                             <div class="w-2 bg-green-500 h-[72%]"></div>
+                             <div class="w-2 bg-green-500 h-[75%]"></div>
+                             <div class="w-2 bg-green-500 h-[78%]"></div>
+                             <div class="w-2 bg-green-500 h-[80%]"></div>
+                             <div class="w-2 bg-green-500 h-[82%]"></div>
+                        </div>
+                        <div class="text-center text-xs text-green-400 mt-1">Stable, Growing Revenue</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script to handle Logic -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        function updateSimulation() {
+            // 1. Get Inputs
+            const hasGrading = document.getElementById('check-grading').checked;
+            const hasInputs = document.getElementById('check-inputs').checked;
+            const hasBranding = document.getElementById('check-branding').checked;
+            const hasCEO = document.getElementById('check-ceo').checked;
+            const hasIncentive = document.getElementById('check-incentive').checked;
+            const hasBuyer = document.getElementById('check-buyer').checked;
+
+            // 2. Calculate Score (0 to 100)
+            let score = 0;
+            if (hasGrading) score += 15;
+            if (hasInputs) score += 10;
+            if (hasBranding) score += 15;
+            if (hasCEO) score += 20;
+            if (hasIncentive) score += 10;
+            if (hasBuyer) score += 30;
+
+            // 3. Calculate Metrics
+            let baseTurnover = 25; // Lakhs
+            let baseMargin = 3.5; // Percent
+            let dependence = 90; // Percent
+
+            if (hasGrading) { baseTurnover += 15; baseMargin += 4; }
+            if (hasInputs) { baseMargin += 2; }
+            if (hasBranding) { baseTurnover += 10; baseMargin += 3; }
+            if (hasCEO) { baseTurnover += 20; dependence -= 20; }
+            if (hasIncentive) { baseTurnover += 10; baseMargin += 1; }
+            if (hasBuyer) { baseTurnover += 40; dependence -= 50; baseMargin += 2; }
+
+            // Cap Dependence at 0
+            if (dependence < 0) dependence = 0;
+
+            // 4. Update UI - Numbers
+            document.getElementById('display-turnover').innerText = baseTurnover.toFixed(1);
+            document.getElementById('display-margin').innerText = baseMargin.toFixed(1) + "%";
+            document.getElementById('display-dependence').innerText = dependence + "%";
+
+            // 5. Update UI - Bars
+            document.getElementById('bar-turnover').style.width = Math.min((baseTurnover / 120) * 100, 100) + "%";
+            
+            // Margin Color Logic
+            const marginBar = document.getElementById('bar-margin');
+            const marginText = document.getElementById('display-margin');
+            marginBar.style.width = Math.min((baseMargin / 20) * 100, 100) + "%";
+            
+            if (baseMargin > 10) {
+                marginBar.classList.remove('bg-red-500', 'bg-yellow-500');
+                marginBar.classList.add('bg-green-500');
+                marginText.classList.remove('text-red-400', 'text-yellow-400');
+                marginText.classList.add('text-green-400');
+            } else if (baseMargin > 5) {
+                marginBar.classList.remove('bg-red-500', 'bg-green-500');
+                marginBar.classList.add('bg-yellow-500');
+                marginText.classList.remove('text-red-400', 'text-green-400');
+                marginText.classList.add('text-yellow-400');
+            }
+
+            // Dependence Bar Logic
+            const depBar = document.getElementById('bar-dependence');
+            const depText = document.getElementById('display-dependence');
+            depBar.style.width = dependence + "%";
+            if (dependence < 20) {
+                depBar.classList.replace('bg-red-500', 'bg-green-500');
+                depText.classList.replace('text-red-400', 'text-green-400');
+            } else {
+                depBar.classList.replace('bg-green-500', 'bg-red-500');
+                depText.classList.replace('text-green-400', 'text-red-400');
+            }
+
+
+            // 6. Update Graduation Visuals
+            const progressLine = document.getElementById('progress-line');
+            const node2 = document.getElementById('node-2');
+            const node3 = document.getElementById('node-3');
+            const badge = document.getElementById('stage-badge');
+            const message = document.getElementById('status-message');
+
+            // Reset Styles
+            node2.classList.remove('border-green-500', 'shadow-[0_0_20px_rgba(34,197,94,0.5)]');
+            node2.querySelector('i').classList.remove('text-white');
+            node2.querySelector('i').classList.add('text-slate-500');
+            
+            node3.classList.remove('border-green-500', 'shadow-[0_0_20px_rgba(34,197,94,0.5)]');
+            node3.querySelector('i').classList.remove('text-white');
+            node3.querySelector('i').classList.add('text-slate-500');
+
+            if (score < 30) {
+                // Stage 1
+                progressLine.style.width = "0%";
+                badge.className = "px-3 py-1 bg-red-500/20 text-red-300 text-xs font-bold uppercase rounded border border-red-500/50";
+                badge.innerText = "Stage 1: Struggling";
+                message.innerText = "FPO is fragile. Add value (Processing) to graduate to Stage 2.";
+            } else if (score >= 30 && score < 80) {
+                // Stage 2
+                progressLine.style.width = "50%";
+                node2.classList.add('border-green-500', 'shadow-[0_0_20px_rgba(34,197,94,0.5)]');
+                node2.querySelector('i').classList.remove('text-slate-500');
+                node2.querySelector('i').classList.add('text-white');
+                node2.nextElementSibling.querySelector('.font-bold').classList.remove('text-slate-500');
+                node2.nextElementSibling.querySelector('.font-bold').classList.add('text-white');
+
+                badge.className = "px-3 py-1 bg-yellow-500/20 text-yellow-300 text-xs font-bold uppercase rounded border border-yellow-500/50";
+                badge.innerText = "Stage 2: Value Adding";
+                message.innerText = "Margins are healthy. Now secure Anchor Buyers and Governance to reach Independence.";
+            } else {
+                // Stage 3
+                progressLine.style.width = "100%";
+                
+                // Active Node 2
+                node2.classList.add('border-green-500');
+                node2.querySelector('i').classList.add('text-white');
+                
+                // Active Node 3
+                node3.classList.add('border-green-500', 'shadow-[0_0_20px_rgba(34,197,94,0.5)]');
+                node3.querySelector('i').classList.remove('text-slate-500');
+                node3.querySelector('i').classList.add('text-white');
+                node3.nextElementSibling.querySelector('.font-bold').classList.remove('text-slate-500');
+                node3.nextElementSibling.querySelector('.font-bold').classList.add('text-white');
+
+                badge.className = "px-3 py-1 bg-green-500/20 text-green-300 text-xs font-bold uppercase rounded border border-green-500/50";
+                badge.innerText = "Stage 3: Independent";
+                message.innerText = "CONGRATULATIONS! The FPO is now profitable, self-sustaining, and bankable.";
+                message.classList.add('text-green-400', 'font-bold');
+            }
+
+            // 7. Update Market Comparison Visuals
+            const marketOld = document.getElementById('market-old');
+            const marketNew = document.getElementById('market-new');
+
+            if (hasBuyer) {
+                marketOld.classList.add('opacity-30', 'blur-sm');
+                marketNew.classList.add('ring-2', 'ring-green-500', 'scale-105');
+                marketNew.classList.remove('border-slate-700');
+                marketNew.classList.add('border-green-500');
+            } else {
+                marketOld.classList.remove('opacity-30', 'blur-sm');
+                marketNew.classList.remove('ring-2', 'ring-green-500', 'scale-105');
+                marketNew.classList.add('border-slate-700');
+                marketNew.classList.remove('border-green-500');
+            }
+
+        }
+    </script>
+</body>
+</html>
